@@ -6,6 +6,9 @@ theme: minima
 minima:
   skin: auto
 markdown: kramdown
+highlighter: rouge
+rouge:
+  theme: monokai
 kramdown:
   input: GFM
   hard_wrap: false

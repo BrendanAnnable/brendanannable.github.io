@@ -51,8 +51,26 @@ a:hover { text-decoration: underline; }
 .theme-toggle { margin-left: 1rem; padding: .4rem .7rem; border-radius: 9999px; border: 1px solid var(--border); background: var(--card); color: var(--fg); cursor: pointer; }
 .theme-toggle:hover { filter: brightness(1.1); }
 .wrap { max-width: 980px; margin: 0 auto; padding: 1rem; }
-pre, code { background: var(--code-bg); }
-pre code { display: block; padding: 1rem; overflow-x: auto; }
+/* Base code styling */
+pre, code {
+  background: #1e293b; /* slate-800 */
+  color: #f8fafc;      /* near-white */
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+/* Code block (multi-line) */
+pre code {
+  display: block;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+/* Inline code (single line inside text) */
+:not(pre) > code {
+  padding: .2rem .4rem;
+  border-radius: 4px;
+}
 table { border-collapse: collapse; width: 100%; background: var(--card); }
 th, td { border: 1px solid var(--border); padding: .5rem; text-align: left; }
 .alert { padding: .8rem 1rem; border-left: 4px solid #888; background: var(--card); border-radius: 6px; }
