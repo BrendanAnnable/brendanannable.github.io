@@ -1,30 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {%- seo -%}
     <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
-    <script>
-    (function() {
-      const key = 'site-theme';
-      const stored = localStorage.getItem(key);
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = stored || (prefersDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-      window.__setTheme = function(next) {
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem(key, next);
-        // Update button text if present
-        const btn = document.getElementById('theme-toggle');
-        if (btn) btn.innerText = next === 'dark' ? '☀️ Light' : '🌙 Dark';
-      };
-      window.addEventListener('DOMContentLoaded', function() {
-        const btn = document.getElementById('theme-toggle');
-        if (btn) btn.innerText = (document.documentElement.getAttribute('data-theme') === 'dark') ? '☀️ Light' : '🌙 Dark';
-      });
-    })();
-  </script>
+    
 </head>
   <body>
     <header class="site-header">
@@ -37,7 +18,7 @@
             <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
           {%- endfor -%}
           </ul>
-        <button id="theme-toggle" class="theme-toggle" onclick="__setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark')">🌙 Dark</button>
+        
     </nav>
       </div>
     </header>
