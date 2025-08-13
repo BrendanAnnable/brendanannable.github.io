@@ -1,0 +1,30 @@
+title: EMHASS + Amber Electric for Home Assistant
+description: Step-by-step guide to optimizing your Home Assistant energy system with EMHASS using Amber Electric's live prices in Australia.
+baseurl: ""
+url: "https://YOUR_GITHUB_USERNAME.github.io/emhass-amber"
+theme: minima
+minima:
+  skin: auto
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+nav:
+  - title: "Home"
+    url: /
+  - title: "Prerequisites"
+    url: /pages/prerequisites.html
+  - title: "Step-by-step Setup"
+    url: /pages/setup.html
+  - title: "EMHASS Config Examples"
+    url: /pages/emhass-config.html
+  - title: "Automation & Scheduling"
+    url: /pages/automation.html
+  - title: "Troubleshooting"
+    url: /pages/troubleshooting.html
+  - title: "FAQ"
+    url: /pages/faq.html
