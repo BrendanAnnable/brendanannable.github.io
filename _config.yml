@@ -6,9 +6,6 @@ theme: minima
 minima:
   skin: auto
 markdown: kramdown
-highlighter: rouge
-rouge:
-  theme: monokai
 kramdown:
   input: GFM
   hard_wrap: false
@@ -31,3 +28,6 @@ nav:
     url: /pages/troubleshooting.html
   - title: "FAQ"
     url: /pages/faq.html
+highlighter: rouge
+rouge:
+  theme: monokai
