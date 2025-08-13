@@ -27,6 +27,7 @@ sensor:
 Create a webhook-triggered automation in HA:
 
 ```yaml
+{% raw %}
 # automations.yaml
 - alias: "Apply EMHASS action"
   trigger:
@@ -44,6 +45,7 @@ Create a webhook-triggered automation in HA:
             - service: script.battery_discharge_on
       default:
         - service: script.battery_stop
+{% endraw %}
 ```
 
 Then have EMHASS (or your cron wrapper) `POST` the next step to the webhook URL.

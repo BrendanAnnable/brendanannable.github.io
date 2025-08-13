@@ -54,6 +54,7 @@ optimization:
 Some Amber sensors expose **$/kWh**; EMHASS examples often use **c/kWh**. Create template sensors in Home Assistant converting to **c/kWh**:
 
 ```yaml
+{% raw %}
 # configuration.yaml
 template:
   - sensor:
@@ -69,6 +70,7 @@ template:
         state: >-
           {% set p = states('sensor.amber_export_price') | float(0) %}
           {{ (p * 100.0) | round(3) }}
+{% endraw %}
 ```
 
 Then reference these new sensors in EMHASS.
