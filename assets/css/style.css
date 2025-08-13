@@ -1,3 +1,66 @@
+
+/* Modern theming with CSS variables */
+:root {
+  --bg: #ffffff;
+  --fg: #0f172a;
+  --muted: #64748b;
+  --border: #e5e7eb;
+  --card: #ffffff;
+  --code-bg: #f6f8fa;
+  --link: #0ea5e9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --fg: #e5e7eb;
+    --muted: #94a3b8;
+    --border: #1f2937;
+    --card: #0f172a;
+    --code-bg: #0b1220;
+    --link: #38bdf8;
+  }
+}
+
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #0f172a;
+  --muted: #64748b;
+  --border: #e5e7eb;
+  --card: #ffffff;
+  --code-bg: #f6f8fa;
+  --link: #0ea5e9;
+}
+html[data-theme="dark"] {
+  --bg: #0b1220;
+  --fg: #e5e7eb;
+  --muted: #94a3b8;
+  --border: #1f2937;
+  --card: #0f172a;
+  --code-bg: #0b1220;
+  --link: #38bdf8;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.site-header { border-bottom: 1px solid var(--border); background: var(--card); }
+.site-description { color: var(--muted); }
+.site-nav ul { list-style: none; padding: 0; display: flex; gap: 1rem; flex-wrap: wrap; }
+.theme-toggle { margin-left: 1rem; padding: .4rem .7rem; border-radius: 9999px; border: 1px solid var(--border); background: var(--card); color: var(--fg); cursor: pointer; }
+.theme-toggle:hover { filter: brightness(1.1); }
+.wrap { max-width: 980px; margin: 0 auto; padding: 1rem; }
+pre, code { background: var(--code-bg); }
+pre code { display: block; padding: 1rem; overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; background: var(--card); }
+th, td { border: 1px solid var(--border); padding: .5rem; text-align: left; }
+.alert { padding: .8rem 1rem; border-left: 4px solid #888; background: var(--card); border-radius: 6px; }
+.alert.warn { border-color: #f59e0b; }
+.alert.tip { border-color: #10b981; }
+kbd { border: 1px solid var(--border); border-bottom-width: 2px; padding: 0 .3rem; border-radius: 4px; background: var(--card); color: var(--fg); }
+
+
 /* Minimal clean styling */
 body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.6; }
 .wrap { max-width: 980px; margin: 0 auto; padding: 1rem; }
