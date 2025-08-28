@@ -1,5 +1,5 @@
-title: EMHASS + Amber Electric for Home Assistant
-description: Step-by-step guide to optimizing your Home Assistant energy system with EMHASS using Amber Electric's live prices in Australia.
+title: SigEnergy with EMHASS + Amber Electric for Home Assistant
+description: Step-by-step guide to setting up your SigEnergy battery system with Home Assistant using EMHASS and Amber Electric's live prices in Australia.
 baseurl: ""
 url: "https://sigenergy.annable.me"
 theme: minima
