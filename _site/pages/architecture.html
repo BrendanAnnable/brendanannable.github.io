@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>SigEnergy with EMHASS + Amber Electric for Home Assistant | Step-by-step guide to setting up your SigEnergy battery system with Home Assistant using EMHASS and Amber Electric’s live prices in Australia.</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="SigEnergy with EMHASS + Amber Electric for Home Assistant" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Step-by-step guide to setting up your SigEnergy battery system with Home Assistant using EMHASS and Amber Electric’s live prices in Australia." />
+<meta property="og:description" content="Step-by-step guide to setting up your SigEnergy battery system with Home Assistant using EMHASS and Amber Electric’s live prices in Australia." />
+<link rel="canonical" href="http://localhost:4000/pages/architecture.html" />
+<meta property="og:url" content="http://localhost:4000/pages/architecture.html" />
+<meta property="og:site_name" content="SigEnergy with EMHASS + Amber Electric for Home Assistant" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="SigEnergy with EMHASS + Amber Electric for Home Assistant" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Step-by-step guide to setting up your SigEnergy battery system with Home Assistant using EMHASS and Amber Electric’s live prices in Australia.","headline":"SigEnergy with EMHASS + Amber Electric for Home Assistant","url":"http://localhost:4000/pages/architecture.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <h1 class="site-title"><a href="/">SigEnergy with EMHASS + Amber Electric for Home Assistant</a></h1>
+        <p class="site-description">Step-by-step guide to setting up your SigEnergy battery system with Home Assistant using EMHASS and Amber Electric's live prices in Australia.</p>
+        <nav class="site-nav">
+          <ul><li><a href="/">Home</a></li><li><a href="/pages/prerequisites.html">Prerequisites</a></li><li><a href="/pages/architecture.html">Architecture</a></li><li><a href="/pages/setup.html">Step-by-step Setup</a></li><li><a href="/pages/emhass-config.html">EMHASS Config Examples</a></li><li><a href="/pages/automation.html">Automation & Scheduling</a></li><li><a href="/pages/troubleshooting.html">Troubleshooting</a></li><li><a href="/pages/faq.html">FAQ</a></li></ul>
+
+    </nav>
+      </div>
+    </header>
+    <main class="wrap content">
+      <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <p>Despite its daunting sophistication at first glance, EMHASS is quite simple at its core. You feed in 4 forecast values and it will spit out an optimal strategy for a given solar system, including when to charge and discharge your battery. Those 4 forecasts are:</p>
+
+<ol>
+  <li>A forecast of how much you can sell electricity for (i.e. feed-in price).</li>
+  <li>A forecast of how much you can buy electricity for.</li>
+  <li>A forecast of how much solar you will generate.</li>
+  <li>A forecast of how much electricity you will use.</li>
+</ol>
+
+<p align="center">
+  <img src="/assets/img/emhass_diagram.png" alt="EMHASS Architecture Diagram" width="800" />
+</p>
+
+<p>EMHASS will take all this information and generate an energy plan. This plan is published to Home Assistant in the form of new sensor entities, which automations can then use to control your battery (e.g. via the Sigenergy modbus integration).</p>
+
+<p>You can also visualize this energy plan in a dashboard and see what EMHASS has decided to do:</p>
+
+<p align="center">
+  <img src="/assets/img/3_day_plan.png" alt="EMHASS Plan Example" width="800" />
+</p>
+
+<p>Here is a 3-day plan</p>
+
+  </div>
+
+</article>
+
+    </main>
+  </body>
+</html>

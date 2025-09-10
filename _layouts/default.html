@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {%- seo -%}
     <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
-    
+
 </head>
   <body>
     <header class="site-header">
@@ -18,15 +18,12 @@
             <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
           {%- endfor -%}
           </ul>
-        
+
     </nav>
       </div>
     </header>
     <main class="wrap content">
       {{ content }}
     </main>
-    <footer class="site-footer wrap">
-      <p>© {{ site.time | date: "%Y" }} · Built with Jekyll · <a href="https://github.com/YOUR_GITHUB_USERNAME/emhass-amber">Source</a></p>
-    </footer>
   </body>
 </html>

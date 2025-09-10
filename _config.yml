@@ -16,6 +16,8 @@ plugins:
 nav:
   - title: "Home"
     url: /
+  - title: "Architecture"
+    url: /pages/architecture.html
   - title: "Prerequisites"
     url: /pages/prerequisites.html
   - title: "Step-by-step Setup"
