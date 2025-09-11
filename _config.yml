@@ -22,14 +22,10 @@ nav:
     url: /pages/prerequisites.html
   - title: "Step-by-step Setup"
     url: /pages/setup.html
-  - title: "EMHASS Config Examples"
-    url: /pages/emhass-config.html
-  - title: "Automation & Scheduling"
+  - title: "Running EMHASS"
+    url: /pages/emhass.html
+  - title: "Automation"
     url: /pages/automation.html
-  - title: "Troubleshooting"
-    url: /pages/troubleshooting.html
-  - title: "FAQ"
-    url: /pages/faq.html
 highlighter: rouge
 rouge:
   theme: monokai

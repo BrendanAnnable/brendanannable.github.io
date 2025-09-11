@@ -3,46 +3,52 @@ layout: default
 title: Step-by-step Setup
 ---
 
-# Step-by-step Setup
+# EMHASS Setup
 
-## 1) Install Amber in Home Assistant
-- Add the **Amber Electric** integration (official or HACS).  
-- Note the entity IDs for **import price (c/kWh)** and **feed-in/export price (c/kWh)**. Example placeholders:
-  - `sensor.amber_import_price`
-  - `sensor.amber_export_price`  
-  Some integrations expose multiple sensors (e.g., general, solar sponge, etc.). Use the **current** import/export price sensors for decisions.
+### Configuration
 
-## 2) Install EMHASS (Docker)
-Create a folder for EMHASS, then run:
+Unfortunately, EMHASS has a long and confusing configuration page, many of which are not actually required.
 
-```bash
-docker run -d --name emhass   -p 5000:5000   -v $PWD/config:/config   -e HASS_URL="http://homeassistant.local:8123"   -e HASS_TOKEN="LONG_LIVED_ACCESS_TOKEN"   -e TZ="Australia/Sydney"   --restart unless-stopped   pierdu/emhass:latest
+Thankfully we can completely ignore the configuration page, so just leave it default. We will be overriding the values we care about later. If you have already configured things, don't worry, it won't matter.
+
+### Running EMHASS from Home Assistant
+
+Since EMHASS is an addon, in order for home assistant to we need a communication system. The simplest way is to use rest commands.
+
+You'll need access to your home assistant configuration files, I recommend the official [vscode addon](https://github.com/hassio-addons/addon-vscode).
+
+If you have not setup packages yet, create a `packages` directory alongside `configuration.yaml`, and then add this to your home assistant `configuration.yaml` file:
+
+```
+homeassistant:
+  packages: !include_dir_named packages
 ```
 
-- Generate an HA **Long-Lived Access Token** under **Profile → Long-Lived Tokens**.
-- After it starts, EMHASS API will be at `http://<host>:5000`.
+Inside the `packages` directory, create a file named `emhass.yaml` with the following content:
 
-## 3) Map your HA entities to EMHASS
-Create `/config/emhass_conf.yaml` inside the container volume and set key parameters. See [EMHASS Config Examples](/pages/emhass-config.html).
-
-## 4) (Optional) Configure forecasts
-- **PV forecast**: Use Solcast integration in HA; set `pv_power_forecast_entity` to your forecast entity (e.g., `sensor.solcast_pv_forecast_today` or a power-by-time series if available).
-- **Load forecast**: You can start with a naive forecast (e.g., moving average) or use historical loads from HA; EMHASS can estimate if not provided.
-
-## 5) Test EMHASS calls
-EMHASS exposes endpoints like `/optimize`. Quick smoke test:
-
-```bash
-curl -X POST "http://localhost:5000/optimize"   -H "Content-Type: application/json"   -d '{"timedelta_hours": 24, "prediction_horizon": 24}'
+```yaml
+rest_command:
+  emhass_dayahead_optim:
+    url: http://localhost:5000/action/dayahead-optim
+    method: POST
+    content_type: "application/json"
+    timeout: 240
+    payload: "{{ payload }}"
+  emhass_naive_mpc_optim:
+    url: http://localhost:5000/action/naive-mpc-optim
+    method: POST
+    content_type: "application/json"
+    timeout: 240
+    payload: "{{ payload }}"
+  emhass_publish_data:
+    url: http://localhost:5000/action/publish-data
+    method: POST
+    content_type: "application/json"
+    timeout: 240
+    payload: "{{ payload }}"
 ```
 
-You should receive a JSON schedule with optimal charge/discharge actions.
+Then restart home assistant.
 
-## 6) Schedule runs
-Use cron on the Docker host to run every 15 minutes (Amber updates frequently):
+These are the 3 emhass actions we will now be able to execute from home assistant. In this guide we will only use the last two. They all take a payload as a parameter, which will later include all the required information such as the forecasts and solar/battery specs.
 
-```bash
-*/15 * * * * curl -s -X POST http://localhost:5000/optimize -H "Content-Type: application/json" -d '{"timedelta_hours":24,"prediction_horizon":24}' > /tmp/emhass_last.json
-```
-
-Then apply actions in HA via an automation that reads the EMHASS output (see [Automation & Scheduling](/pages/automation.html)).
